@@ -17,6 +17,7 @@ public class StudentController{
 
     @PostMapping("/student")
     String createStudent(@RequestBody Student student){
+
         studentList.add(student);
     return "student created";
 }
