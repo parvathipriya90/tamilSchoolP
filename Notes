@@ -1,0 +1,35 @@
+//data stored in DB
+
+idfromDB =900009nkjjjkbv08jsvv
+namefromDB=hdsicnc2eo8ui897bbb785
+
+ JDBC will establish a connection with DB using ip,port,database name
+ Jdbc will change it to string
+ will execute the query return the result in string format
+
+ex:
+
+idfromDB ="4"
+namefromDB="priya"
+
+JPA is a interface defined by java to persist data on the disk
+
+    JPA -> Java Persistent API(rulez)
+findByID
+save()
+
+Hibernet is the implementation of JPA
+will convert the jdbc string result into ORM (Object Relational Mapping)
+
+      hibernet will create java object and map the fields
+         ORM implementation of JPA.
+
+ Student st=new Student(4,"priya")
+
+ Envs:
+
+ Dev -> in system -> dev
+ QA -> testing data
+ PERF -> Performance testing
+ UAT -> User acceptance testing,beta users
+ PROD -> real user

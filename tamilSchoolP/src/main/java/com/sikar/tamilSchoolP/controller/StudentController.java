@@ -26,16 +26,14 @@ public class StudentController{
    @GetMapping("/student/{id}")
    ResponseEntity<Student>  getStudent(@PathVariable Long id){
        Optional<Student> student= studentRepository.findById(id);
-       if(student.isPresent()){
-           return ResponseEntity.status(HttpStatus.OK).body(student.get());
-       }
+       return student.map(value -> ResponseEntity.status(HttpStatus.OK).body(value))
+               .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
   //     for (int i=0;i<studentList.size();i++) {
     //       Student student = studentList.get(i);
       //     if (student.getId() == id) {
          //     return ResponseEntity.status(200).body(student);
           //}
       //}
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
    }
     @GetMapping("/students")
     ResponseEntity<Iterable<Student>>  getStudents(){
