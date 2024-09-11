@@ -1,25 +1,28 @@
-spring:
-  profiles:
-    active: prod
 server:
   address: 0.0.0.0
   port: 8080
+
+spring:
   application:
     name: tamilSchoolP
-  datasource:
-    driverClassName: org.h2.Driver
-    password: password
-    url: jdbc:h2:file:C:/DB/mydatabase;
-    username: sa
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+  profiles:
+    active: pq
+      #  application:
+ #   name: tamilSchoolP
+  #datasource:
+   # driverClassName: org.h2.Driver
+    #password: password
+  #  url: jdbc:h2:file:C:/DB/mydatabase;
+   # username: sa
+  #h2:
+   # console:
+    #  enabled: true
+     # path: /h2-console
+      #settings:
+       # trace: false
+        #web-allow-others: false
+  #jpa:
+   # database-platform: org.hibernate.dialect.H2Dialect
+    #show-sql: true
+ #   hibernate:
+#      ddl-auto: update

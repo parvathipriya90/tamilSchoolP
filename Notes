@@ -33,3 +33,6 @@ will convert the jdbc string result into ORM (Object Relational Mapping)
  PERF -> Performance testing
  UAT -> User acceptance testing,beta users
  PROD -> real user
+
+ //SOLID principles
+ S-> single responsibility

@@ -1,7 +1,5 @@
 package com.sikar.tamilSchoolP.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -10,12 +8,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "StudentTable")
+@Table(name = "student_table")
 public class Student implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int age;
-    private String dept;
-    private int sem;
 }

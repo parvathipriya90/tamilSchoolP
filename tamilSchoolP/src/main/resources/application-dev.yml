@@ -7,7 +7,7 @@ spring:
     name: tamilSchoolP
 
   datasource:
-    driverClassName: org.h2.Driver
+   # driverClassName: org.h2.Driver
     password: password
     url: jdbc:h2:file:C:/DB/dev/db
     # url: jdbc:h2:mem:testdb
