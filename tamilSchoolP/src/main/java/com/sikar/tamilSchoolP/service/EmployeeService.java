@@ -1,5 +1,6 @@
 package com.sikar.tamilSchoolP.service;
 
+import com.sikar.tamilSchoolP.exceptions.EmployeeNotFoundException;
 import com.sikar.tamilSchoolP.model.Employee;
 import com.sikar.tamilSchoolP.repos.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class EmployeeService {
     }
 
     public Employee getData(Long id) {
-        if (employeeRepo.findById(id).isPresent()) {
+        if (employeeRepo.existsById(id)) {
             return employeeRepo.findById(id).get();
         } else {
-            throw new RuntimeException("Employee not found for the id" + id);
+            throw new EmployeeNotFoundException("Employee not found for the id" + id);
         }
     }
     public Employee updateData(Employee emp){
