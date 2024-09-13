@@ -11,11 +11,12 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="employee_table")
-public class Employee implements Serializable {
+@Table(name="enrollment_table")
+public class Enrollment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",nullable = false)
     private Long id;
-    private String name;
+    private Long studentId;
+    private Long courseId;
 }
+
