@@ -1,5 +1,6 @@
 package com.sikar.tamilSchoolP.service;
 
+import com.sikar.tamilSchoolP.model.Enrollment;
 import com.sikar.tamilSchoolP.model.Student;
 import com.sikar.tamilSchoolP.repos.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ public class StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+ @Autowired
+ CourseManagementFeignClient courseManagementFeignClient;
 
     public Student addStudent(Student student) {
         return studentRepository.save(student);
@@ -55,7 +59,11 @@ public class StudentService {
         }
 
     }
+
+    public void enrollCourse(Enrollment enrollment) {
+       courseManagementFeignClient.enrollCourse(enrollment);
     }
+}
 //package com.sikar.tamilSchoolP.service;
 //
 //import com.sikar.tamilSchoolP.model.Student;

@@ -1,12 +1,11 @@
 package com.sikar.tamilSchoolP.controller;
+import com.sikar.tamilSchoolP.model.Enrollment;
 import com.sikar.tamilSchoolP.model.Student;
-import com.sikar.tamilSchoolP.repos.StudentRepository;
 import com.sikar.tamilSchoolP.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.Optional;
 
 @RestController
 public class StudentController {
@@ -18,10 +17,17 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+
+    @PostMapping("{id}/enroll")
+    ResponseEntity<Void> enrollCourse(@RequestBody Enrollment enrollment) {
+        studentService.enrollCourse(enrollment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
     @PostMapping("/student")
     ResponseEntity<Student> createStudent(@RequestBody Student student) {
         return ResponseEntity.status(200).body(studentService.addStudent(student));
     }
+
 
     @GetMapping("/student/{id}")
     ResponseEntity<Student> getStudent(@PathVariable Long id) {
