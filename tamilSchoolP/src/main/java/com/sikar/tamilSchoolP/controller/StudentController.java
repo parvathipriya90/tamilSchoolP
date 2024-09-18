@@ -18,7 +18,7 @@ public class StudentController {
     StudentService studentService;
 
 
-    @PostMapping("{id}/enroll")
+    @PostMapping("/enroll")
     ResponseEntity<Void> enrollCourse(@RequestBody Enrollment enrollment) {
         studentService.enrollCourse(enrollment);
         return new ResponseEntity<>(HttpStatus.OK);

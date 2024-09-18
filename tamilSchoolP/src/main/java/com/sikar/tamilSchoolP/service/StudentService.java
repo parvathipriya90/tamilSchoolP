@@ -4,7 +4,12 @@ import com.sikar.tamilSchoolP.model.Enrollment;
 import com.sikar.tamilSchoolP.model.Student;
 import com.sikar.tamilSchoolP.repos.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +20,34 @@ public class StudentService {
     @Autowired
     StudentRepository studentRepository;
 
- @Autowired
- CourseManagementFeignClient courseManagementFeignClient;
+// @Autowired
+    //CourseManagementFeignClient courseManagementFeignClient;
+
+    @Autowired
+    RestTemplate restTemplate;
+
+    WebClient webClient= WebClient.builder().build();
+
+
+    public void enrollCourse(Enrollment enrollment) {
+        //   courseManagementFeignClient.enrollCourse(enrollment);
+// Enrollment enrollment1= restTemplate
+        //       .postForEntity("http://localhost:9090/enroll",enrollment,Enrollment.class)
+        //     .getBody();
+        ResponseEntity<Enrollment> enrollmentPacket= restTemplate
+                .postForEntity("http://localhost:9090/enroll",enrollment,Enrollment.class);
+        System.out.println("Enrollment packet received:" + enrollmentPacket.getBody());
+        System.out.println("do some other work");
+
+
+     //  Mono<Enrollment> enrollmentMono=webClient.post().uri("http://localhost:9090/enroll")
+       //         .bodyValue(enrollment)
+         //       .retrieve()
+           //     .bodyToMono(Enrollment.class);
+       //enrollmentMono.subscribe(System.out::println);
+//
+  //      System.out.println("do some other work");
+    }
 
     public Student addStudent(Student student) {
         return studentRepository.save(student);
@@ -58,10 +89,6 @@ public class StudentService {
             throw new RuntimeException("Student not found for the id " + id);
         }
 
-    }
-
-    public void enrollCourse(Enrollment enrollment) {
-       courseManagementFeignClient.enrollCourse(enrollment);
     }
 }
 //package com.sikar.tamilSchoolP.service;
